@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import createPost from "@/actions/actions";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
+
 
 type Inputs = {
   title: string;
@@ -11,6 +13,9 @@ type Inputs = {
 };
 
 export default function Form() {
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -27,6 +32,9 @@ export default function Form() {
       await createPost(formData);
       reset();
       toast.success("Post created successfully");
+      setTimeout(() => {
+        router.push("/posts");
+      }, 1700)
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("Failed to create post");
@@ -63,7 +71,7 @@ export default function Form() {
           Submit
         </button>
       </form>
-      <ToastContainer autoClose={1500} position="bottom-right" />
+      <ToastContainer autoClose={1650} position="bottom-right" />
     </>
   );
 }

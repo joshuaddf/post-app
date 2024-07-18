@@ -3,6 +3,7 @@ import Form from "@/components/Form";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import React from "react";
 
+
 const page = async () => {
 
   return (
